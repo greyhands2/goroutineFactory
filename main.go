@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/whatever/your/app/name/is/goroutines"
+	"github.com/whatever/your/app/name/is/factory"
 	"github.com/whatever/your/app/name/is/jobs"
 	"github.com/whatever/your/app/name/is/model"
 )
@@ -18,10 +18,10 @@ func main() {
 		ImageUrl: user.Image,
 	}
 	// call go routine factory to process and upload the image
-	go goroutines.WorkGoroutine[jobs.DeleteImageJobData](jobs.DeleteImage, imageData)
+	go factory.WorkGoroutine[jobs.DeleteImageJobData](jobs.DeleteImage, imageData)
 
 	emailData := jobs.EmailJobData{
 		User: user, Subject: "Maharba Mizterrr Wick", Body: "You know how it goes 😉😉😉 say the passcode and your weapons shall be yours🙇🏻🙇🏻🙇🏻 : ",
 	}
-	go goroutines.WorkGoroutine[jobs.EmailJobData](jobs.SendEmail, emailData)
+	go factory.WorkGoroutine[jobs.EmailJobData](jobs.SendEmail, emailData)
 }
